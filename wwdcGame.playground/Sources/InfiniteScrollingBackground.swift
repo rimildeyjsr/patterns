@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class InfiniteScrollingBackground {
+public class InfiniteScrollingBackground {
     
     // MARK: Enumerations
     enum ScrollDirection {
@@ -42,8 +42,8 @@ class InfiniteScrollingBackground {
     private weak var scene : SKScene?
     
     // MARK: Public Properties
-    public let speed : TimeInterval
-    public let scrollDirection : ScrollDirection
+    let speed : TimeInterval
+    let scrollDirection : ScrollDirection
     
     // MARK: Initialization
     
