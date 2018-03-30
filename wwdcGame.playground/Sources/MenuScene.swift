@@ -1,10 +1,10 @@
 import SpriteKit
 import Foundation
 
-public class GameScene: SKScene {
-
-    let backgroundImage = SKSpriteNode(imageNamed: "gameBackground")
+public class MenuScene: SKScene {
     
+    let backgroundImage = SKSpriteNode(imageNamed: "menuScreen")
+
     override public func didMove(to view: SKView) {
         backgroundImage.size = self.size
         backgroundImage.position = CGPoint(x:self.size.width/2, y: self.size.height/2)
@@ -39,8 +39,9 @@ public class GameScene: SKScene {
     
     override public func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-       
-       
+        
+        
     }
 }
+
 
