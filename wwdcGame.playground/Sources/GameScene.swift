@@ -7,12 +7,11 @@ public class GameScene: SKScene {
     let background2 = SKSpriteNode(imageNamed: "bg2")
     
     override public func didMove(to view: SKView) {
+        background1.size = self.size
+        background1.position = CGPoint(x:self.size.width/2, y: self.size.height/2)
+        background1.zPosition = 0
+        self.addChild(background1)
         
-        let images : [UIImage] = [UIImage(named: "bg1")!, UIImage(named: "bg2")!]
-        let scrollingBackground = InfiniteScrollingBackground(images: images, scene: self, scrollDirection: .left, speed: 15)
-        
-        scrollingBackground!.scroll()
-        scrollingBackground!.zPosition = 0.5
     }
     
     func touchDown(atPoint pos : CGPoint) {
