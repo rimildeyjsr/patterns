@@ -8,9 +8,10 @@ public class MenuScene: SKScene {
     let titleLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
     let descriptionLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
     let menuLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
+    
     let menuButtonNamesArray : [String] = ["10 Pattern","Fractal Trees","FireWorks","StarField"]
     var shapeArray : [SKShapeNode] = []
-   
+    
     override public func didMove(to view: SKView) {
         self.scene!.backgroundColor = SKColor.black
         
@@ -54,7 +55,6 @@ public class MenuScene: SKScene {
             buttonLabel.position = CGPoint(x:menuButton.frame.midX ,y:menuButton.frame.midY - 15)
             
             menuButton.addChild(buttonLabel)
-            
             shapeArray.append(menuButton)
             
         }
