@@ -8,6 +8,8 @@ public class MenuScene: SKScene {
     let titleLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
     let descriptionLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
     let menuLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
+    let menuButtonNamesArray : [String] = ["10 Pattern","Fractal Trees","FireWorks","StarField"]
+    var shapeArray : [SKShapeNode] = []
    
     override public func didMove(to view: SKView) {
         self.scene!.backgroundColor = SKColor.black
@@ -33,10 +35,23 @@ public class MenuScene: SKScene {
         menuLabel.text = "Menu"
         menuLabel.fontSize = 40
         menuLabel.fontColor = SKColor.white
-        menuLabel.position = CGPoint(x:frame.midX,y:frame.midY-100)
+        menuLabel.position = CGPoint(x:frame.midX,y:frame.midY+200)
         menuLabel.alpha = 0.0
         actq.addNext(sprite: menuLabel,action: SKAction.fadeIn(withDuration: 2.0) )
         addChild(menuLabel)
+        
+        for i in 0..<menuButtonNamesArray.count {
+            let menuButton = SKShapeNode(rect: CGRect(x: frame.midX-100, y: frame.midX + 100 - CGFloat(i*80), width: 200, height: 50),cornerRadius: 20)
+            menuButton.fillColor = .clear
+            menuButton.lineWidth = 2
+            menuButton.alpha = 0.0
+            shapeArray.append(menuButton)
+        }
+        
+        for shape in shapeArray{
+            actq.addNext(sprite: shape,action: SKAction.fadeIn(withDuration: 0.5))
+            addChild(shape)
+        }
         
     }
     
