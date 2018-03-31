@@ -3,14 +3,27 @@ import Foundation
 
 public class MenuScene: SKScene {
     
-    let backgroundImage = SKSpriteNode(imageNamed: "menuScreen")
-
+    let actq = ActionQ()
+    
+    let titleLabel = SKLabelNode(fontNamed: "ArialMT")
+    let descriptionLabel = SKLabelNode(fontNamed: "ArialMT")
+   
     override public func didMove(to view: SKView) {
-        backgroundImage.size = self.size
-        backgroundImage.position = CGPoint(x:self.size.width/2, y: self.size.height/2)
-        backgroundImage.zPosition = 0
-        self.addChild(backgroundImage)
+        titleLabel.text = "Arbitrary"
+        titleLabel.fontSize = 65
+        titleLabel.fontColor = SKColor.green
+        titleLabel.position = CGPoint(x:frame.midX,y:frame.midY + 50)
+        titleLabel.alpha = 0.0
+        actq.addNext(sprite: titleLabel,action: SKAction.fadeIn(withDuration: 2.0) )
+        addChild(titleLabel)
         
+        descriptionLabel.text = "A collection of random things"
+        descriptionLabel.fontSize = 45
+        descriptionLabel.fontColor = SKColor.green
+        descriptionLabel.position = CGPoint(x:frame.midX,y:frame.midY - 50)
+        descriptionLabel.alpha = 0.0
+        actq.addNext(sprite: descriptionLabel,action: SKAction.fadeIn(withDuration: 2.0) )
+        addChild(descriptionLabel)
     }
     
     func touchDown(atPoint pos : CGPoint) {
@@ -24,6 +37,7 @@ public class MenuScene: SKScene {
     func touchUp(atPoint pos : CGPoint) {
         
     }
+
     
     override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { touchMoved(toPoint: t.location(in: self)) }

@@ -3,13 +3,7 @@ import Foundation
 
 public class GameScene: SKScene {
 
-    let backgroundImage = SKSpriteNode(imageNamed: "gameBackground")
-    
     override public func didMove(to view: SKView) {
-        backgroundImage.size = self.size
-        backgroundImage.position = CGPoint(x:self.size.width/2, y: self.size.height/2)
-        backgroundImage.zPosition = 0
-        self.addChild(backgroundImage)
         
     }
     

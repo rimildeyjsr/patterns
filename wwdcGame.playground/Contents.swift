@@ -1,7 +1,7 @@
 import PlaygroundSupport
 import SpriteKit
 
-let view = SKView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width,height:UIScreen.main.bounds.height))
+let view = SKView(frame: CGRect(x: 0, y: 0, width: 800,height:800))
 
 if let scene = MenuScene(fileNamed: "MenuScene") {
     scene.scaleMode = .aspectFill
