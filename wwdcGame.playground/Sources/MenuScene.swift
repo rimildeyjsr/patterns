@@ -41,11 +41,22 @@ public class MenuScene: SKScene {
         addChild(menuLabel)
         
         for i in 0..<menuButtonNamesArray.count {
-            let menuButton = SKShapeNode(rect: CGRect(x: frame.midX-100, y: frame.midX + 100 - CGFloat(i*80), width: 200, height: 50),cornerRadius: 20)
+            let menuButton = SKShapeNode(rect: CGRect(x: frame.midX-200, y: frame.midX + 100 - CGFloat(i*80), width: 400, height: 60),cornerRadius: 30)
             menuButton.fillColor = .clear
             menuButton.lineWidth = 2
             menuButton.alpha = 0.0
+            
+            
+            let buttonLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
+            buttonLabel.text = menuButtonNamesArray[i]
+            buttonLabel.fontSize = 30
+            buttonLabel.fontColor = SKColor.white
+            buttonLabel.position = CGPoint(x:menuButton.frame.midX ,y:menuButton.frame.midY - 15)
+            
+            menuButton.addChild(buttonLabel)
+            
             shapeArray.append(menuButton)
+            
         }
         
         for shape in shapeArray{
