@@ -5,25 +5,28 @@ public class MenuScene: SKScene {
     
     let actq = ActionQ()
     
-    let titleLabel = SKLabelNode(fontNamed: "ArialMT")
-    let descriptionLabel = SKLabelNode(fontNamed: "ArialMT")
+    let titleLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
+    let descriptionLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
    
     override public func didMove(to view: SKView) {
         titleLabel.text = "Arbitrary"
         titleLabel.fontSize = 65
         titleLabel.fontColor = SKColor.green
-        titleLabel.position = CGPoint(x:frame.midX,y:frame.midY + 50)
+        titleLabel.position = CGPoint(x:frame.midX,y:frame.midY)
         titleLabel.alpha = 0.0
         actq.addNext(sprite: titleLabel,action: SKAction.fadeIn(withDuration: 2.0) )
+        actq.addNext(sprite: titleLabel,action: SKAction.fadeOut(withDuration: 2.0) )
         addChild(titleLabel)
         
         descriptionLabel.text = "A collection of random things"
-        descriptionLabel.fontSize = 45
+        descriptionLabel.fontSize = 40
         descriptionLabel.fontColor = SKColor.green
-        descriptionLabel.position = CGPoint(x:frame.midX,y:frame.midY - 50)
+        descriptionLabel.position = CGPoint(x:frame.midX,y:frame.midY)
         descriptionLabel.alpha = 0.0
         actq.addNext(sprite: descriptionLabel,action: SKAction.fadeIn(withDuration: 2.0) )
+        actq.addNext(sprite: descriptionLabel,action: SKAction.fadeOut(withDuration: 2.0) )
         addChild(descriptionLabel)
+        
     }
     
     func touchDown(atPoint pos : CGPoint) {
