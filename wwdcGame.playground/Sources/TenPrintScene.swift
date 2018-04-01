@@ -9,7 +9,7 @@ public class TenPrintScene: SKScene {
     
     var initial_x = 0
     var initial_y = 0
-    let spacing = 20
+    let spacing = 50
     var done: DarwinBoolean = true
 
     override public func didMove(to view: SKView) {
@@ -23,7 +23,6 @@ public class TenPrintScene: SKScene {
                 let linearShapeNode = SKShapeNode(points: &points,
                                                   count: points.count)
                 linearShapeNode.lineWidth = 5
-                //linearShapeNode.strokeShader = .white
                 addChild(linearShapeNode)
             } else {
                 var points = [CGPoint(x: initial_x, y: initial_y + spacing),
@@ -31,7 +30,6 @@ public class TenPrintScene: SKScene {
                 let linearShapeNode = SKShapeNode(points: &points,
                                                   count: points.count)
                 linearShapeNode.lineWidth = 5
-                //linearShapeNode.strokeShader = .white
                 addChild(linearShapeNode)
             }
             

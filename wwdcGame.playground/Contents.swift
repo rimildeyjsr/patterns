@@ -13,6 +13,12 @@ if let scene = TenPrintScene(fileNamed: "TenPrintScene") {
     view.presentScene(scene)
 }
 
+/*if let scene = FractalTreesScene(fileNamed: "FractalTreesScene") {
+    scene.scaleMode = .aspectFill
+    view.presentScene(scene)
+}
+ */
+
 PlaygroundSupport.PlaygroundPage.current.liveView = view
 
 
