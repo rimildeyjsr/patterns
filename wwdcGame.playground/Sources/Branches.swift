@@ -8,17 +8,20 @@ public class Branch : SKScene {
     var end = CGPoint()
     var finished: Bool = false
     
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    public override init(size: CGSize) {
+        super.init(size: CGSize(width: 800, height: 800))
+    }
+    
     public required init(_ begin: CGPoint,_ end: CGPoint,_ finished: Bool){
         self.begin = begin
         self.end = end
         self.finished = finished
         super.init()
     }
-   
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     
     public func show() {
         var points = [CGPoint(x: begin.x, y: begin.y),
@@ -59,5 +62,4 @@ public class Branch : SKScene {
         return(Branch(end,newEnd,false))
         
     }
-    
 }

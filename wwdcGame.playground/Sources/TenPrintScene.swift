@@ -4,9 +4,6 @@ import Foundation
 
 public class TenPrintScene: SKScene {
     
-    //let probabilitySlider = UISlider()
-    //let spacingSlider = UISlider()
-    
     var initial_x = 0
     var initial_y = 0
     let spacing = 50

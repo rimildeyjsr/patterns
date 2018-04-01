@@ -1,10 +1,11 @@
 import SpriteKit
 import Foundation
+import CoreGraphics
 
 public class FractalTreesScene: SKScene {
 
     var tree = [Branch]()
-    var leaves = [Branch]()
+    var leaves = [CGPoint]()
     
     var count = 0;
     let tree_width = 400
@@ -24,34 +25,29 @@ public class FractalTreesScene: SKScene {
                 tree.append(tree[i].branchLeft());
             }
             tree[i].finished = true;
+            count += 1;
+            
+            if (count == 6) {
+                for i in 0..<tree.count {
+                    if (!tree[i].finished) {
+                        let leaf = tree[i].end
+                        leaves.append(leaf);
+                    }
+                }
+            }
         }
-        count += 1;
         
-    }
-    
-    func touchDown(atPoint pos : CGPoint) {
+        for i in 0..<tree.count {
+            tree[i].show()
+        }
         
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
+        for i in 0..<leaves.count {
+            let leaf = SKShapeNode(circleOfRadius: 3.0)
+            leaf.position = leaves[i]
+            leaf.fillColor = .red
+            addChild(leaf)
+        }
         
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        
-    }
-    
-    
-    override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { touchMoved(toPoint: t.location(in: self)) }
-    }
-    
-    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    override public func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { touchUp(atPoint: t.location(in: self)) }
     }
     
     override public func update(_ currentTime: TimeInterval) {
@@ -59,6 +55,7 @@ public class FractalTreesScene: SKScene {
         
         
     }
+    
 }
 
 
