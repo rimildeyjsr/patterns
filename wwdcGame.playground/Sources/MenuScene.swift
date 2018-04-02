@@ -9,7 +9,7 @@ public class MenuScene: SKScene {
     let descriptionLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
     let menuLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
     
-    let menuButtonNamesArray : [String] = ["10 Pattern","Fractal Trees","Phyllotaxis","StarField"]
+    let menuButtonNamesArray : [String] = ["10 Pattern","Fractal Trees","Phyllotaxis"]
     var shapeArray : [SKShapeNode] = []
     
     override public func didMove(to view: SKView) {
