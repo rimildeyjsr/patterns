@@ -9,13 +9,13 @@ public class MenuScene: SKScene {
     let descriptionLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
     let menuLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
     
-    let menuButtonNamesArray : [String] = ["10 Pattern","Fractal Trees","FireWorks","StarField"]
+    let menuButtonNamesArray : [String] = ["10 Pattern","Fractal Trees","Phyllotaxis","StarField"]
     var shapeArray : [SKShapeNode] = []
     
     override public func didMove(to view: SKView) {
         self.scene!.backgroundColor = SKColor.black
         
-        titleLabel.text = "Arbitrary"
+        titleLabel.text = "Patterns"
         titleLabel.fontSize = 65
         titleLabel.fontColor = SKColor.white
         titleLabel.position = CGPoint(x:frame.midX,y:frame.midY)
@@ -24,7 +24,7 @@ public class MenuScene: SKScene {
         actq.addNext(sprite: titleLabel,action: SKAction.fadeOut(withDuration: 2.0) )
         addChild(titleLabel)
         
-        descriptionLabel.text = "A collection of random things"
+        descriptionLabel.text = "some random quote"
         descriptionLabel.fontSize = 40
         descriptionLabel.fontColor = SKColor.white
         descriptionLabel.position = CGPoint(x:frame.midX,y:frame.midY)
