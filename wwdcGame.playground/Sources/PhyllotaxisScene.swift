@@ -3,7 +3,7 @@ import SpriteKit
 import GameplayKit
 import CoreGraphics
 
-public class Phyllotaxis : SKScene {
+public class PhyllotaxisScene : SKScene {
     
     var n: Double = 0
     var scalingFactor: Double = 8

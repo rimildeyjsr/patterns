@@ -1,6 +1,14 @@
 import SpriteKit
 import Foundation
 
+enum SceneType: Int {
+    
+    case MenuScene   = 0
+    case TenPrintScene      //1
+    case FractalTreesScene      //2
+    case PhyllotaxisScene //3
+}
+
 public class MenuScene: SKScene {
     
     let actq = ActionQ()
@@ -46,6 +54,7 @@ public class MenuScene: SKScene {
             menuButton.fillColor = .clear
             menuButton.lineWidth = 2
             menuButton.alpha = 0.0
+            menuButton.name = menuButtonNamesArray[i]
             
             
             let buttonLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
@@ -66,36 +75,52 @@ public class MenuScene: SKScene {
         
     }
     
-    func touchDown(atPoint pos : CGPoint) {
+    func goToScene(newScene: SceneType){
         
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
+        var sceneToLoad:SKScene?
         
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
+        switch newScene {
+            
+        case SceneType.MenuScene:
+            sceneToLoad = MenuScene(fileNamed: "MenuScene")
+            
+        case SceneType.TenPrintScene:
+            sceneToLoad = TenPrintScene(fileNamed:"TenPrintScene")
+            
+        case SceneType.FractalTreesScene:
+            sceneToLoad = FractalTreesScene(fileNamed:"FractalTreesScene")
+            
+        case SceneType.PhyllotaxisScene:
+            sceneToLoad = PhyllotaxisScene(fileNamed:"PhyllotaxisScene")
+            
+        }
         
-    }
-
-    
-    override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { touchMoved(toPoint: t.location(in: self)) }
-    }
-    
-    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { touchUp(atPoint: t.location(in: self)) }
+        if let scene = sceneToLoad {
+            scene.size = size
+            scene.scaleMode = scaleMode
+            let transition = SKTransition.fade(withDuration: 2)
+            self.view?.presentScene(scene, transition: transition)
+        }
     }
     
-    override public func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    override public func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+    public override func touchesBegan(_ touches: Set<UITouch>,with event: UIEvent?) {
+        let touch = touches.first
         
-        
+        if let location = touch?.location(in: self){
+            let node = atPoint(location)
+            
+            if node.name == "10 Pattern"{
+                
+                goToScene(newScene: SceneType.TenPrintScene)
+                
+            } else if node.name == "Fractal Trees" {
+                
+                goToScene(newScene: SceneType.FractalTreesScene)
+                
+            } else if node.name == "Phyllotaxis" {
+                
+                goToScene(newScene: SceneType.PhyllotaxisScene)
+            }
+        }
     }
 }
-
-
