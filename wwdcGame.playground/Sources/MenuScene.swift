@@ -1,6 +1,7 @@
 import SpriteKit
 import Foundation
 
+//MARK: - ENUM for scenes
 enum SceneType: Int {
     
     case MenuScene   = 0
@@ -11,6 +12,7 @@ enum SceneType: Int {
 
 public class MenuScene: SKScene {
     
+    // MARK: - initializations
     let actq = ActionQ()
     
     let titleLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
@@ -20,9 +22,13 @@ public class MenuScene: SKScene {
     let menuButtonNamesArray : [String] = ["10 Pattern","Fractal Trees","Phyllotaxis"]
     var shapeArray : [SKShapeNode] = []
     
+    
+    // MARK: - did move view
     override public func didMove(to view: SKView) {
         self.scene!.backgroundColor = SKColor.black
         
+
+        // MARK: title label
         titleLabel.text = "Patterns"
         titleLabel.fontSize = 65
         titleLabel.fontColor = SKColor.white
@@ -32,6 +38,7 @@ public class MenuScene: SKScene {
         actq.addNext(sprite: titleLabel,action: SKAction.fadeOut(withDuration: 2.0) )
         addChild(titleLabel)
         
+        // MARK: description label
         descriptionLabel.text = "some random quote"
         descriptionLabel.fontSize = 40
         descriptionLabel.fontColor = SKColor.white
@@ -39,8 +46,9 @@ public class MenuScene: SKScene {
         descriptionLabel.alpha = 0.0
         actq.addNext(sprite: descriptionLabel,action: SKAction.fadeIn(withDuration: 2.0) )
         actq.addNext(sprite: descriptionLabel,action: SKAction.fadeOut(withDuration: 2.0) )
-        addChild(descriptionLabel)
+        addChild(descriptionLabel) 
         
+        // MARK: menu
         menuLabel.text = "Menu"
         menuLabel.fontSize = 40
         menuLabel.fontColor = SKColor.white
@@ -49,6 +57,7 @@ public class MenuScene: SKScene {
         actq.addNext(sprite: menuLabel,action: SKAction.fadeIn(withDuration: 2.0) )
         addChild(menuLabel)
         
+        // MARK: loop to create buttons
         for i in 0..<menuButtonNamesArray.count {
             let menuButton = SKShapeNode(rect: CGRect(x: frame.midX-200, y: frame.midX + 100 - CGFloat(i*80), width: 400, height: 60),cornerRadius: 30)
             menuButton.fillColor = .clear
@@ -61,13 +70,14 @@ public class MenuScene: SKScene {
             buttonLabel.text = menuButtonNamesArray[i]
             buttonLabel.fontSize = 30
             buttonLabel.fontColor = SKColor.white
-            buttonLabel.position = CGPoint(x:menuButton.frame.midX ,y:menuButton.frame.midY - 15)
+            buttonLabel.position = CGPoint(x:menuButton.frame.midX ,y:menuButton.frame.midY - 10)
             
             menuButton.addChild(buttonLabel)
             shapeArray.append(menuButton)
             
         }
         
+        // MARK: adding buttons to scene as nodes
         for shape in shapeArray{
             actq.addNext(sprite: shape,action: SKAction.fadeIn(withDuration: 0.5))
             addChild(shape)
@@ -75,6 +85,7 @@ public class MenuScene: SKScene {
         
     }
     
+    // MARK: - go to scene function
     func goToScene(newScene: SceneType){
         
         var sceneToLoad:SKScene?
@@ -98,11 +109,12 @@ public class MenuScene: SKScene {
         if let scene = sceneToLoad {
             scene.size = size
             scene.scaleMode = scaleMode
-            let transition = SKTransition.fade(withDuration: 2)
+            let transition = SKTransition.fade(withDuration: 0.5)
             self.view?.presentScene(scene, transition: transition)
         }
     }
-    
+
+    // MARK: - touches began function
     public override func touchesBegan(_ touches: Set<UITouch>,with event: UIEvent?) {
         let touch = touches.first
         
