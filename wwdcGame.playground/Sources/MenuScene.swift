@@ -8,6 +8,7 @@ enum SceneType: Int {
     case TenPrintScene      //1
     case FractalTreesScene      //2
     case PhyllotaxisScene //3
+    case About //4
 }
 
 public class MenuScene: SKScene {
@@ -19,7 +20,7 @@ public class MenuScene: SKScene {
     let descriptionLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
     let menuLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
     
-    let menuButtonNamesArray : [String] = ["10 Pattern","Fractal Trees","Phyllotaxis"]
+    let menuButtonNamesArray : [String] = ["10 Pattern","Fractal Trees","Phyllotaxis","About"]
     var shapeArray : [SKShapeNode] = []
     
     let quote: String = """
@@ -38,7 +39,7 @@ public class MenuScene: SKScene {
         
 
         // MARK: title label
-        titleLabel.text = "Patterns"
+        /*titleLabel.text = "Patterns"
         titleLabel.fontSize = 65
         titleLabel.fontColor = SKColor.white
         titleLabel.position = CGPoint(x:frame.midX,y:frame.midY)
@@ -57,7 +58,7 @@ public class MenuScene: SKScene {
         descriptionLabel.preferredMaxLayoutWidth = 700
         actq.addNext(sprite: descriptionLabel,action: SKAction.fadeIn(withDuration: 2.0) )
         actq.addNext(sprite: descriptionLabel,action: SKAction.fadeOut(withDuration: 5.0) )
-        addChild(descriptionLabel)
+        addChild(descriptionLabel)*/
         
         // MARK: menu
         menuLabel.text = "Menu"
@@ -115,6 +116,8 @@ public class MenuScene: SKScene {
         case SceneType.PhyllotaxisScene:
             sceneToLoad = PhyllotaxisScene(fileNamed:"PhyllotaxisScene")
             
+        case SceneType.About:
+            sceneToLoad = About(fileNamed:"About")
         }
         
         if let scene = sceneToLoad {
@@ -143,6 +146,10 @@ public class MenuScene: SKScene {
             } else if node.name == "Phyllotaxis" {
                 
                 goToScene(newScene: SceneType.PhyllotaxisScene)
+                
+            } else if node.name == "About" {
+                
+                goToScene(newScene: SceneType.About)
             }
         }
     }
