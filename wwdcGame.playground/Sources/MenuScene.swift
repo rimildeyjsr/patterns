@@ -22,6 +22,15 @@ public class MenuScene: SKScene {
     let menuButtonNamesArray : [String] = ["10 Pattern","Fractal Trees","Phyllotaxis"]
     var shapeArray : [SKShapeNode] = []
     
+    let quote: String = """
+    There are only patterns,
+    patterns on top of patterns,
+    patterns that affect other patterns.
+    Patterns hidden by patterns.
+    Patterns within patterns.
+    - Chuck Palahnuik
+    """
+    
     
     // MARK: - did move view
     override public func didMove(to view: SKView) {
@@ -39,14 +48,16 @@ public class MenuScene: SKScene {
         addChild(titleLabel)
         
         // MARK: description label
-        descriptionLabel.text = "some random quote"
-        descriptionLabel.fontSize = 40
+        descriptionLabel.text = quote
+        descriptionLabel.fontSize = 35
         descriptionLabel.fontColor = SKColor.white
-        descriptionLabel.position = CGPoint(x:frame.midX,y:frame.midY)
+        descriptionLabel.position = CGPoint(x:440,y:230)
         descriptionLabel.alpha = 0.0
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.preferredMaxLayoutWidth = 700
         actq.addNext(sprite: descriptionLabel,action: SKAction.fadeIn(withDuration: 2.0) )
-        actq.addNext(sprite: descriptionLabel,action: SKAction.fadeOut(withDuration: 2.0) )
-        addChild(descriptionLabel) 
+        actq.addNext(sprite: descriptionLabel,action: SKAction.fadeOut(withDuration: 5.0) )
+        addChild(descriptionLabel)
         
         // MARK: menu
         menuLabel.text = "Menu"
