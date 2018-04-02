@@ -20,7 +20,7 @@ public class MenuScene: SKScene {
     let descriptionLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
     let menuLabel = SKLabelNode(fontNamed: "Noteworthy-Bold")
     
-    let menuButtonNamesArray : [String] = ["10 Pattern","Fractal Trees","Phyllotaxis","About"]
+    let menuButtonNamesArray : [String] = ["10 Pattern","Fractal Tree","Phyllotaxis","About"]
     var shapeArray : [SKShapeNode] = []
     
     let quote: String = """
@@ -39,7 +39,7 @@ public class MenuScene: SKScene {
         
 
         // MARK: title label
-        /*titleLabel.text = "Patterns"
+        titleLabel.text = "Patterns"
         titleLabel.fontSize = 65
         titleLabel.fontColor = SKColor.white
         titleLabel.position = CGPoint(x:frame.midX,y:frame.midY)
@@ -58,7 +58,7 @@ public class MenuScene: SKScene {
         descriptionLabel.preferredMaxLayoutWidth = 700
         actq.addNext(sprite: descriptionLabel,action: SKAction.fadeIn(withDuration: 2.0) )
         actq.addNext(sprite: descriptionLabel,action: SKAction.fadeOut(withDuration: 5.0) )
-        addChild(descriptionLabel)*/
+        addChild(descriptionLabel)
         
         // MARK: menu
         menuLabel.text = "Menu"
@@ -139,7 +139,7 @@ public class MenuScene: SKScene {
                 
                 goToScene(newScene: SceneType.TenPrintScene)
                 
-            } else if node.name == "Fractal Trees" {
+            } else if node.name == "Fractal Tree" {
                 
                 goToScene(newScene: SceneType.FractalTreesScene)
                 
