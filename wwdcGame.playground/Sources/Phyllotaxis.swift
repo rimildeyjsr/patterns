@@ -10,7 +10,7 @@ public class Phyllotaxis : SKScene {
     
     var initialPoint = CGPoint(x: 400, y: 400)
     
-    let angle : Float = (Float(Double.pi) / 1.309)
+    let angle : Float = (Float(Double.pi) / 1.31099)
     
     override public func didMove(to view: SKView) {
         self.scene!.backgroundColor = SKColor.black
