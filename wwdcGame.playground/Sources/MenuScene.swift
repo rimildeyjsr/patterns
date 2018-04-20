@@ -11,6 +11,8 @@ enum SceneType: Int {
     case About //4
 }
 
+var count = 0
+
 public class MenuScene: SKScene {
     
     // MARK: - initializations
@@ -37,28 +39,32 @@ public class MenuScene: SKScene {
     override public func didMove(to view: SKView) {
         self.scene!.backgroundColor = SKColor.black
         
-
-        // MARK: title label
-        titleLabel.text = "Patterns"
-        titleLabel.fontSize = 65
-        titleLabel.fontColor = SKColor.white
-        titleLabel.position = CGPoint(x:frame.midX,y:frame.midY)
-        titleLabel.alpha = 0.0
-        actq.addNext(sprite: titleLabel,action: SKAction.fadeIn(withDuration: 2.0) )
-        actq.addNext(sprite: titleLabel,action: SKAction.fadeOut(withDuration: 2.0) )
-        addChild(titleLabel)
+        if (count == 0) {
+            // MARK: title label
+            titleLabel.text = "Patterns"
+            titleLabel.fontSize = 65
+            titleLabel.fontColor = SKColor.white
+            titleLabel.position = CGPoint(x:frame.midX,y:frame.midY)
+            titleLabel.alpha = 0.0
+            actq.addNext(sprite: titleLabel,action: SKAction.fadeIn(withDuration: 2.0) )
+            actq.addNext(sprite: titleLabel,action: SKAction.fadeOut(withDuration: 2.0) )
+            addChild(titleLabel)
+            
+            // MARK: description label
+            descriptionLabel.text = quote
+            descriptionLabel.fontSize = 35
+            descriptionLabel.fontColor = SKColor.white
+            descriptionLabel.position = CGPoint(x:440,y:230)
+            descriptionLabel.alpha = 0.0
+            descriptionLabel.numberOfLines = 0
+            descriptionLabel.preferredMaxLayoutWidth = 700
+            actq.addNext(sprite: descriptionLabel,action: SKAction.fadeIn(withDuration: 2.0) )
+            actq.addNext(sprite: descriptionLabel,action: SKAction.fadeOut(withDuration: 5.0) )
+            addChild(descriptionLabel)
+            
+            count += 1
+        }
         
-        // MARK: description label
-        descriptionLabel.text = quote
-        descriptionLabel.fontSize = 35
-        descriptionLabel.fontColor = SKColor.white
-        descriptionLabel.position = CGPoint(x:440,y:230)
-        descriptionLabel.alpha = 0.0
-        descriptionLabel.numberOfLines = 0
-        descriptionLabel.preferredMaxLayoutWidth = 700
-        actq.addNext(sprite: descriptionLabel,action: SKAction.fadeIn(withDuration: 2.0) )
-        actq.addNext(sprite: descriptionLabel,action: SKAction.fadeOut(withDuration: 5.0) )
-        addChild(descriptionLabel)
         
         // MARK: menu
         menuLabel.text = "Menu"
@@ -68,6 +74,7 @@ public class MenuScene: SKScene {
         menuLabel.alpha = 0.0
         actq.addNext(sprite: menuLabel,action: SKAction.fadeIn(withDuration: 2.0) )
         addChild(menuLabel)
+        
         
         // MARK: loop to create buttons
         for i in 0..<menuButtonNamesArray.count {
